@@ -1,4 +1,4 @@
-import HomeCollage from "../assets/HomeCollage.jpg";
+import HomeCollage from "../assets/HomeCollage.JPG";
 
 export default function Home() {
   return (

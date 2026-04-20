@@ -1,4 +1,4 @@
-import SheepBreeds1 from "../assets/SheepBreeds1.jpg";
+import SheepBreeds1 from "../assets/SheepBreeds1.JPG";
 
 export default function BreedExplorer() {
   return (
