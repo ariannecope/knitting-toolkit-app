@@ -1,41 +1,39 @@
+import { useState } from "react";
+import breeds from "../data";
+import BreedCard from "../components/BreedCard";
 import SheepBreeds1 from "../assets/SheepBreeds1.JPG";
 
 export default function BreedExplorer() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // basic filtering (works even with small dataset)
+  const filteredBreeds = breeds.filter((breed) => {
+    return breed.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
-    <div className="breed-page">
+    <div className="breed-explorer-page">
       <h1>Breed Explorer</h1>
-      <p>Explore yarn and fiber characteristics by breed.</p>
-      <img src={SheepBreeds1} alt="Shepherdess surrounded by her flock of different-colored sheep"/>
 
-      <div className="breed-controls">
-        <input
-          type="text"
-          placeholder="Search breeds..."
-        />
+      <p>
+        Explore different sheep breeds and learn about their wool
+        characteristics, texture, and ideal knitting projects.
+      </p>
 
-        <select>
-          <option value="">All fiber types</option>
-          <option value="wool">Wool</option>
-          <option value="alpaca">Alpaca</option>
-          <option value="cotton">Cotton</option>
-        </select>
-      </div>
+      <img src={SheepBreeds1} alt="A shepherdess surrounded by four shetland sheep"/>
+
+      <input
+        type="text"
+        placeholder="Search breeds..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="breed-search"
+      />
 
       <div className="breed-grid">
-        <div className="breed-card">
-          <h3>Merino</h3>
-          <p>Soft, fine wool ideal for garments worn next to skin.</p>
-        </div>
-
-        <div className="breed-card">
-          <h3>Alpaca</h3>
-          <p>Warm, lightweight fiber with a silky feel.</p>
-        </div>
-
-        <div className="breed-card">
-          <h3>Bluefaced Leicester</h3>
-          <p>Strong, slightly lustrous wool with good stitch definition.</p>
-        </div>
+        {filteredBreeds.map((breed) => (
+          <BreedCard key={breed.name} breed={breed} />
+        ))}
       </div>
     </div>
   );

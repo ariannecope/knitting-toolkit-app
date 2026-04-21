@@ -5,7 +5,6 @@ import BreedExplorer from './pages/BreedExplorer';
 import Shop from './pages/Shop';
 import YarnCalculator from './pages/YarnCalculator';
 import ProjectTracker from './pages/ProjectTracker';
-import ProjectEstimator from './pages/ProjectEstimator';
 import GaugeCalculator from './pages/GaugeCalculator';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/yarn-calculator" element={<YarnCalculator />} />
         <Route path="/project-tracker" element={<ProjectTracker />} />
-        <Route path="/project-estimator" element={<ProjectEstimator />} />
         <Route path="/gauge-calculator" element={<GaugeCalculator />} />
         {/* future pages go here */}
       </Routes>

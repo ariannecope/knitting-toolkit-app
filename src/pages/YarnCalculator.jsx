@@ -10,7 +10,7 @@ import YarnTwo from '../assets/YarnTwo.JPG';
 
 export default function YarnCalculator() {
   return (
-    <ToolPageLayout title="Yarn Calculator Toolkit">
+    <ToolPageLayout title="Yarn Calculator">
 
       <img src={YarnOne} alt="Basket holding dried flowers and a handknit shawl" />
 

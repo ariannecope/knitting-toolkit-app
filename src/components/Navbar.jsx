@@ -10,7 +10,6 @@ export default function Navbar() {
       <div className="nav-links">
         <Link to="/">Home</Link>
         <Link to="/breed-explorer">Breed Explorer</Link>
-        <Link to="/project-estimator">Project Estimator</Link>
         <Link to="/gauge-calculator">Gauge Calculator</Link>
         <Link to="/yarn-calculator">Yarn Calculator</Link>
         <Link to="/project-tracker">Project Tracker</Link>
