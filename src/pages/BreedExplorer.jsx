@@ -1,5 +1,5 @@
 import { useState } from "react";
-import breeds from "../data";
+import breeds from "../data/data";
 import BreedCard from "../components/BreedCard";
 import SheepBreeds1 from "../assets/SheepBreeds1.JPG";
 
