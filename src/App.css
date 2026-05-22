@@ -398,7 +398,11 @@ font-style: italic;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.1);
   background-color: #f5f5f1;
-  color: white;
+  color: #333;
+}
+
+.gauge-form input::placeholder {
+  color: #777;
 }
 
 .gauge-form button {

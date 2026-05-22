@@ -4,20 +4,24 @@ import swatch from "../assets/swatch.jpeg";
 export default function GaugeCalculator() {
   const [stitches, setStitches] = useState("");
   const [width, setWidth] = useState("");
+  // null works well for conditional rendering value that comes later
   const [gauge, setGauge] = useState(null);
 
+  //parseFloat converts text into a decimal number--needed because input values come in as strings
   function calculateGauge() {
     const s = parseFloat(stitches);
     const w = parseFloat(width);
 
+//     "If s OR w is invalid/falsy, / show an error and stop the function." ! means: “NOT” It flips truthiness.
     if (!s || !w) {
       setGauge("Please enter valid numbers.");
       return;
     }
 
-    // basic gauge formula (stitches per inch)
+    // basic gauge formula stitches divided by width (stitches per inch) .toFixed(2) rounds to two decimal places.
     const result = (s / w).toFixed(2);
 
+    //rendering of results
     setGauge(`Gauge: ${result} stitches per inch`);
   }
 
@@ -47,6 +51,8 @@ export default function GaugeCalculator() {
         </button>
       </div>
 
+{/* IF gauge exists,
+show the result box. */}
       {gauge && (
         <div className="gauge-result">
           {gauge}
@@ -55,3 +61,25 @@ export default function GaugeCalculator() {
     </div>
   );
 }
+
+// User types
+// ↓
+// onChange fires
+// ↓
+// State updates
+// ↓
+// React rerenders
+// ↓
+// User clicks button
+// ↓
+// calculateGauge runs
+// ↓
+// Strings converted to numbers
+// ↓
+// Math performed
+// ↓
+// Gauge state updates
+// ↓
+// React rerenders again
+// ↓
+// Result appears
