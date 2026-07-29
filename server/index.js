@@ -56,17 +56,37 @@ app.use(express.json());
 // They do not know about requests (req) or responses (res).
 // Their job is to take values, run SQL, and return database results.
 
-async function getAllBreeds() {
-  const result = await db.query(`
+//get all breeds
+app.get("/api/get-all-breeds", async (req, res) => {
+  try {
+    const breeds = await getAllBreeds();
+
+    res.json(breeds);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Failed to retrieve breeds"
+    });
+  }
+});
+
+//get one breed
+async function getBreedById(id) {
+  const result = await db.query(
+    `
     SELECT
       breeds.*,
       breed_families.family_name
     FROM breeds
     JOIN breed_families
-    ON breeds.family_id = breed_families.family_id;
-  `);
+    ON breeds.family_id = breed_families.family_id
+    WHERE breeds.breed_id = $1;
+    `,
+    [id]
+  );
 
-  return result.rows;
+  return result.rows[0];
 }
 
 // async function getAllBreeds() {
@@ -83,17 +103,41 @@ async function getAllBreeds() {
 // API Endpoints
 // =====================
 
+// get all breeds endpoint
 app.get("/api/get-all-breeds", async (req, res) => {
-  const breeds = await getAllBreeds();
+  try {
+    const breeds = await getAllBreeds();
 
-  res.json(breeds);
+    res.json(breeds);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Failed to retrieve breeds"
+    });
+  }
 });
 
 
-const port = 3000;
+//get one breed endpoint
+app.get("/api/get-breed/:id", async (req, res) => {
+  try {
+    const breed = await getBreedById(req.params.id);
 
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+    if (!breed) {
+      return res.status(404).json({
+        error: "Breed not found"
+      });
+    }
+
+    res.json(breed);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Failed to retrieve breed"
+    });
+  }
 });
 
 // Endpoint = receives the request

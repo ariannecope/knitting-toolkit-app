@@ -63,6 +63,10 @@ export default function BreedExplorer() {
             className="breed-search"
           />
 
+          {filteredBreeds.length === 0 && (
+            <p>No breeds found. Try another search.</p>
+          )}
+
           <div className="breed-grid">
             {filteredBreeds.map((breed) => (
               <BreedCard key={breed.breed_id} breed={breed} />
