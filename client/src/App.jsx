@@ -6,6 +6,7 @@ import Shop from './pages/Shop';
 import YarnCalculator from './pages/YarnCalculator';
 import ProjectTracker from './pages/ProjectTracker';
 import GaugeCalculator from './pages/GaugeCalculator';
+import BreedDetail from "./pages/BreedDetail";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/breed-explorer" element={<BreedExplorer />} />
+        <Route path="/breeds" element={<BreedExplorer />} />
+        <Route path="/breeds/:id" element={<BreedDetail />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/yarn-calculator" element={<YarnCalculator />} />
         <Route path="/project-tracker" element={<ProjectTracker />} />

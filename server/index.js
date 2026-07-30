@@ -24,6 +24,7 @@ const db = new pg.Pool({
 
 // express() creates our server application.
 // The app variable represents our Express server.
+
 const app = express();
 
 
@@ -31,19 +32,6 @@ const app = express();
 // The frontend sends form data using JSON.stringify().
 // express.json() converts that incoming JSON into a JavaScript object
 // and stores it on req.body so our routes can access it.
-//
-// Example:
-// Frontend sends:
-// {
-//   name: "Arianne",
-//   country_name: "Japan"
-// }
-//
-// Backend receives:
-// req.body = {
-//   name: "Arianne",
-//   country_name: "Japan"
-// }
 
 app.use(express.json());
 
@@ -56,22 +44,25 @@ app.use(express.json());
 // They do not know about requests (req) or responses (res).
 // Their job is to take values, run SQL, and return database results.
 
-//get all breeds
-app.get("/api/get-all-breeds", async (req, res) => {
-  try {
-    const breeds = await getAllBreeds();
 
-    res.json(breeds);
+// Get all breeds from the database
+async function getAllBreeds() {
+  const result = await db.query(
+    `
+    SELECT
+      breeds.*,
+      breed_families.family_name
+    FROM breeds
+    JOIN breed_families
+    ON breeds.family_id = breed_families.family_id;
+    `
+  );
 
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      error: "Failed to retrieve breeds"
-    });
-  }
-});
+  return result.rows;
+}
 
-//get one breed
+
+// Get one breed by its ID
 async function getBreedById(id) {
   const result = await db.query(
     `
@@ -89,21 +80,17 @@ async function getBreedById(id) {
   return result.rows[0];
 }
 
-// async function getAllBreeds() {
-//   const result = await db.query(`
-//     SELECT *
-//     FROM breeds;
-//   `);
-
-//   return result.rows;
-// }
-
 
 // =====================
 // API Endpoints
 // =====================
 
-// get all breeds endpoint
+
+// Get all breeds endpoint
+// This receives the request from the frontend,
+// calls the helper function,
+// and sends the database results back as JSON.
+
 app.get("/api/get-all-breeds", async (req, res) => {
   try {
     const breeds = await getAllBreeds();
@@ -112,6 +99,7 @@ app.get("/api/get-all-breeds", async (req, res) => {
 
   } catch (error) {
     console.error(error);
+
     res.status(500).json({
       error: "Failed to retrieve breeds"
     });
@@ -119,7 +107,11 @@ app.get("/api/get-all-breeds", async (req, res) => {
 });
 
 
-//get one breed endpoint
+// Get one breed endpoint
+// The :id comes from the URL.
+// Example:
+// /api/get-breed/5
+
 app.get("/api/get-breed/:id", async (req, res) => {
   try {
     const breed = await getBreedById(req.params.id);
@@ -134,12 +126,25 @@ app.get("/api/get-breed/:id", async (req, res) => {
 
   } catch (error) {
     console.error(error);
+
     res.status(500).json({
       error: "Failed to retrieve breed"
     });
   }
 });
 
+
 // Endpoint = receives the request
 // Helper = performs the database action
 // Database = stores the information
+
+
+// =====================
+// Start Server
+// =====================
+
+const PORT = 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
