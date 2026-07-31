@@ -20,7 +20,11 @@ export default function ProjectTracker() {
     <div className="tracker-page">
       <h1>Project Tracker</h1>
       <p>Keep track of your knitting projects.</p>
-      <img src={SheepSockCollage} alt="A collage of photos of handknit projects, wool, and a black sheep"/>
+      <img
+        src={SheepSockCollage}
+        alt="A collage of sheep socks"
+        className="image-standard"
+      />
 
       <div className="tracker-input">
         <input
@@ -37,7 +41,7 @@ export default function ProjectTracker() {
         {projects.length === 0 ? (
           <p>No projects yet.</p>
         ) : (
-          projects.map(project => (
+          projects.map((project) => (
             <div key={project.id} className="tracker-item">
               {project.name}
             </div>

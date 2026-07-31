@@ -11,17 +11,23 @@ import YarnTwo from '../assets/YarnTwo.JPG';
 export default function YarnCalculator() {
   return (
     <ToolPageLayout title="Yarn Calculator">
-
-      <img src={YarnOne} alt="Basket holding dried flowers and a handknit shawl" />
+      <img
+        src={YarnOne}
+        alt="Basket holding dried flowers and a handknit shawl"
+        className="image-standard"
+      />
 
       <YardageText />
       <GaugeText />
       <MistakesTest />
 
-      <img src={YarnTwo} alt="Three fluffy skeins of yarn" />
+      <img
+        src={YarnTwo}
+        alt="Three fluffy skeins of yarn"
+        className="image-standard"
+      />
 
       <YarnCalculatorComponent />
-
     </ToolPageLayout>
   );
 }

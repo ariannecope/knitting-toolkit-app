@@ -29,7 +29,11 @@ export default function GaugeCalculator() {
     <div className="gauge-page">
       <h1>Gauge Calculator</h1>
       <p>Calculate your knitting gauge (stitches per inch).</p>
-      <img src={swatch} alt="A small swatch being knit on circular needles"/>
+      <img
+        src={swatch}
+        alt="A small swatch being knit on circular needles"
+        className="image-standard"
+      />
 
       <div className="gauge-form">
         <input
@@ -46,18 +50,12 @@ export default function GaugeCalculator() {
           onChange={(e) => setWidth(e.target.value)}
         />
 
-        <button onClick={calculateGauge}>
-          Calculate Gauge
-        </button>
+        <button onClick={calculateGauge}>Calculate Gauge</button>
       </div>
 
-{/* IF gauge exists,
+      {/* IF gauge exists,
 show the result box. */}
-      {gauge && (
-        <div className="gauge-result">
-          {gauge}
-        </div>
-      )}
+      {gauge && <div className="gauge-result">{gauge}</div>}
     </div>
   );
 }

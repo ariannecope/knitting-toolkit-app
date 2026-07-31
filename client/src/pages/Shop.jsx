@@ -14,22 +14,19 @@ export default function Shop() {
 
       <div className="shop-grid">
         {products.map((item) => (
-<div className="product-card">
-  <img src={item.image} alt={item.title} />
+          <div className="product-card">
+            <img src={item.image} alt={item.title} className="image-standard" />
 
-  {item.badge && <span className="badge">{item.badge}</span>}
+            {item.badge && <span className="badge">{item.badge}</span>}
 
- <h3 style={{ color: item.titleColor }}>
-  {item.title}
-</h3>
+            <h3 style={{ color: item.titleColor }}>{item.title}</h3>
 
-  <p>{formatPrice(item.price)}</p>
-  
+            <p>{formatPrice(item.price)}</p>
 
-  <a href={item.etsyUrl} target="_blank" rel="noreferrer">
-    View on Etsy
-  </a>
-</div>
+            <a href={item.etsyUrl} target="_blank" rel="noreferrer">
+              View on Etsy
+            </a>
+          </div>
         ))}
       </div>
     </div>

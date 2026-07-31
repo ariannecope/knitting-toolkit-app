@@ -7,7 +7,10 @@ export default function BreedExplorer() {
   const [breeds, setBreeds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [families, setFamilies] = useState([]);
+  const [selectedFamily, setSelectedFamily] = useState("all");
 
+  //get breeds
   useEffect(() => {
     async function getBreeds() {
       try {
@@ -30,9 +33,37 @@ export default function BreedExplorer() {
     getBreeds();
   }, []);
 
-  // basic filtering (works even with small dataset)
+  //get families
+  useEffect(() => {
+    async function getFamilies() {
+      try {
+        const response = await fetch("/api/get-all-families");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch families");
+        }
+
+        const data = await response.json();
+
+        setFamilies(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+
+    getFamilies();
+  }, []);
+
+  // filtering
   const filteredBreeds = breeds.filter((breed) => {
-    return breed.breed_name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = breed.breed_name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    const matchesFamily =
+      selectedFamily === "all" || breed.family_id === Number(selectedFamily);
+
+    return matchesSearch && matchesFamily;
   });
 
   return (
@@ -53,15 +84,36 @@ export default function BreedExplorer() {
           <img
             src={SheepBreeds1}
             alt="A shepherdess surrounded by four shetland sheep"
+            className="image-standard"
           />
 
-          <input
-            type="text"
-            placeholder="Search breeds..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="breed-search"
-          />
+          <div className="breed-controls">
+            <input
+              type="text"
+              placeholder="Search breeds..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="breed-search"
+            />
+
+            <select
+              value={selectedFamily}
+              onChange={(e) => setSelectedFamily(e.target.value)}
+              className="breed-filter"
+            >
+              <option value="all">All Families</option>
+
+              {families.map((family) => (
+                <option key={family.family_id} value={family.family_id}>
+                  {family.family_name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {searchTerm && (
+            <button onClick={() => setSearchTerm("")}>Clear</button>
+          )}
 
           {filteredBreeds.length === 0 && (
             <p>No breeds found. Try another search.</p>

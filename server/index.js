@@ -80,6 +80,15 @@ async function getBreedById(id) {
   return result.rows[0];
 }
 
+//breed families
+async function getAllFamilies() {
+  const result = await db.query(
+    "SELECT * FROM breed_families ORDER BY family_name;"
+  );
+
+  return result.rows;
+}
+
 
 // =====================
 // API Endpoints
@@ -133,6 +142,12 @@ app.get("/api/get-breed/:id", async (req, res) => {
   }
 });
 
+// get all breed families
+app.get("/api/get-all-families", async (req, res) => {
+  const families = await getAllFamilies();
+
+  res.json(families);
+});
 
 // Endpoint = receives the request
 // Helper = performs the database action

@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Pacifico&display=swap');
 
+:root {
+  --page-bg: #E2E2F2;
+  --card-bg: #d5e1eb;
+  --cream: #fefbf5;
+  --text-dark: #4C4738;
+  --text-muted: #6991AF;
+  --accent-blue: #7C91C2;
+  --accent-gold: #B88E3A;
+  --accent-purple: #916B7E;
+  --border-light: rgba(255,255,255,0.15);
+}
+
 body {
   margin: 0;
   font-family: system-ui, Arial, sans-serif;
@@ -101,16 +113,18 @@ color: #6991AF
   padding: 2rem;
   color: #6991AF
 }
-img {
-  max-width: 300px;      /* smaller than before */
-  width: 100%;           /* still responsive */
+
+.image-standard {
+  max-width: 300px;
+  width: 100%;
   height: auto;
   display: block;
-  margin: 15px auto;     /* some vertical spacing */
+  margin: 15px auto;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* lighter shadow */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   border: 8px solid white;
 }
+
 .app {
   max-width: 800px;       /* keeps content readable */
   margin: 40px auto;      /* centers horizontally with top/bottom space */
@@ -465,4 +479,39 @@ font-style: italic;
 .breed-info-card li {
   list-style: none;
   margin-bottom: 0.5rem;
+}
+
+
+/* breed family search */
+.breed-explorer-page select {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: #f9fafa;
+  color: #1f1f1f;
+  margin-bottom: 20px;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.breed-explorer-page select:focus {
+  border-color: #7C91C2;
+  box-shadow: 0 0 0 2px rgba(124, 145, 194, 0.3);
+}
+
+.breed-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 600px) {
+  .breed-controls {
+    flex-direction: row;
+    align-items: center;
+  }
 }
