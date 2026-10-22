@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import BreedIllustration from "./BreedIllustration";
 
 export default function BreedCard({ breed }) {
   return (
     <div className="breed-card">
+      <BreedIllustration breed={breed} />
+
       <h2>{breed.breed_name}</h2>
 
       <p>

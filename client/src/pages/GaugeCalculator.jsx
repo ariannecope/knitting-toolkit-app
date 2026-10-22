@@ -35,6 +35,52 @@ export default function GaugeCalculator() {
         className="image-standard"
       />
 
+      <h2>What is Gauge?</h2>
+      <p>
+        Gauge is the number of stitches (and rows) that fit into a set
+        measurement of knitted fabric, usually written as stitches per inch or
+        stitches per 4 inches (10 cm). It depends on your yarn, your needles,
+        the stitch pattern, and how tightly or loosely you knit.
+      </p>
+
+      <h2>Why Gauge Matters</h2>
+      <p>
+        Patterns are written for a specific gauge. If yours is different, the
+        finished piece will be a different size. For example, a sweater body
+        of 200 stitches is meant to measure 40 inches at 5 stitches per inch,
+        but at 5.5 stitches per inch it comes out closer to 36 inches.
+      </p>
+      <p>
+        Gauge also changes how the fabric feels and drapes, and how much yarn
+        you'll use, so checking it first saves time and yarn.
+      </p>
+
+      <h2>How to Use This Calculator</h2>
+      <ol className="gauge-steps">
+        <li>
+          Knit a swatch at least 4 to 6 inches wide, using the yarn, needles,
+          and stitch pattern from your project.
+        </li>
+        <li>
+          Wash and dry the swatch the way you'll treat the finished piece, then
+          lay it flat.
+        </li>
+        <li>
+          Measure a section across the middle, away from the edges, and count
+          the stitches in it, including half stitches.
+        </li>
+        <li>
+          Enter the number of stitches and the width you measured in inches,
+          then click Calculate Gauge.
+        </li>
+        <li>
+          Compare your result with the pattern. If it lists stitches per 4
+          inches, divide that number by 4. More stitches per inch than the
+          pattern means you're knitting tighter, so try larger needles; fewer
+          means try smaller needles.
+        </li>
+      </ol>
+
       <div className="gauge-form">
         <input
           type="number"

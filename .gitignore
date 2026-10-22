@@ -16,3 +16,6 @@ dist-ssr
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Original artwork (backed up separately; web copies live in client/public/images/breeds)
+client/src/assets/sheep breed images/

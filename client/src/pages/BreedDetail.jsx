@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import BreedIllustration from "../components/BreedIllustration";
 
 export default function BreedDetail() {
   const { id } = useParams();
@@ -43,6 +44,8 @@ export default function BreedDetail() {
       <Link to="/breeds">← Back to Breed Explorer</Link>
 
       <h1>{breed.breed_name}</h1>
+
+      <BreedIllustration breed={breed} />
 
       <section className="breed-info-card">
         <h2>Breed Information</h2>

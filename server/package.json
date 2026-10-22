@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
-  "dev": "nodemon index.js"
-},
+  "scripts": {
+    "dev": "nodemon index.js",
+    "seed:breed-images": "node db/seed-breed-images.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ariannecope/countries-app.git"

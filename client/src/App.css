@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Pacifico&family=Tangerine:wght@400;700&display=swap');
 
 :root {
   --page-bg: #E2E2F2;
@@ -244,7 +244,7 @@ font-style: italic;
 
 .breed-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));  /* auto-fill keeps cards card-sized when a filter leaves only a few */
   gap: 16px;
 }
 
@@ -259,7 +259,12 @@ font-style: italic;
 .breed-card h2 {
   margin-top: 0;
   margin-bottom: 8px;
-  font-size: 18px;
+  font-family: 'Tangerine', cursive;
+  font-weight: 700;
+  font-style: normal;   /* Tangerine is already a script; skip the global h2 italic */
+  font-size: 37px;      /* Tangerine runs small, so it needs a larger size to read well */
+  line-height: 1.1;
+  letter-spacing: normal;
 }
 
 /* Image styling inside cards */
@@ -400,6 +405,20 @@ font-style: italic;
   font-style: italic;
 }
 
+/* how-to steps: same look as the page's paragraphs */
+.gauge-steps {
+  color: #4e5163;
+  font-style: italic;
+  text-align: left;
+  max-width: 560px;
+  margin: 0 auto 24px;
+  padding-left: 24px;
+}
+
+.gauge-steps li {
+  margin-bottom: 8px;
+}
+
 .gauge-form {
   display: flex;
   flex-direction: column;
@@ -479,6 +498,47 @@ font-style: italic;
 .breed-info-card li {
   list-style: none;
   margin-bottom: 0.5rem;
+}
+
+
+/* breed illustrations */
+/* Scoped to .breed-illustration so the hero image and other images are unchanged.
+   The image files are already cropped close to each sheep, so they are shown
+   at their natural shape with no frame; height varies from breed to breed. */
+
+.breed-illustration {
+  margin: 0 0 12px;
+}
+
+.breed-card .breed-illustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.breed-detail-page .breed-illustration {
+  max-width: 420px;
+  margin: 0 auto 12px;
+}
+
+.breed-detail-page .breed-illustration img {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  border-radius: 10px;
+}
+
+.breed-illustration .image-credit {
+  margin-top: 6px;
+  font-size: 12px;
+  font-style: normal;
+  color: #51565c;
 }
 
 

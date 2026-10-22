@@ -46,15 +46,23 @@ app.use(express.json());
 
 
 // Get all breeds from the database
+// LEFT JOIN keeps breeds that don't have a primary image yet
+// (their image fields will be null).
 async function getAllBreeds() {
   const result = await db.query(
     `
     SELECT
       breeds.*,
-      breed_families.family_name
+      breed_families.family_name,
+      breed_images.image_path,
+      breed_images.alt_text AS image_alt,
+      breed_images.attribution AS image_attribution
     FROM breeds
     JOIN breed_families
-    ON breeds.family_id = breed_families.family_id;
+    ON breeds.family_id = breed_families.family_id
+    LEFT JOIN breed_images
+    ON breed_images.breed_id = breeds.breed_id
+    AND breed_images.is_primary;
     `
   );
 
@@ -68,10 +76,16 @@ async function getBreedById(id) {
     `
     SELECT
       breeds.*,
-      breed_families.family_name
+      breed_families.family_name,
+      breed_images.image_path,
+      breed_images.alt_text AS image_alt,
+      breed_images.attribution AS image_attribution
     FROM breeds
     JOIN breed_families
     ON breeds.family_id = breed_families.family_id
+    LEFT JOIN breed_images
+    ON breed_images.breed_id = breeds.breed_id
+    AND breed_images.is_primary
     WHERE breeds.breed_id = $1;
     `,
     [id]
