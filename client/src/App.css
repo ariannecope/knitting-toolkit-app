@@ -33,6 +33,7 @@ body {
   font-size: 18px;
   font-weight: 700;
   font-family: Pacifico;
+  line-height: 1.3;   /* keeps the two lines from overlapping when the logo wraps on phones */
 }
 
 .nav-links {
@@ -73,9 +74,9 @@ body {
 
 .home h1 {
   font-size: 42px;
-  margin-bottom: 12px;
   color: #7C91C2;
-  margin-bottom: 15px;
+  margin-bottom: 28px;
+  line-height: 1.4;   /* the inherited line-height is fixed at ~23px, too short for this script when it wraps */
 }
 
 .home p {
