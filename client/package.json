@@ -113,9 +113,11 @@
     "zod": "^4.3.6",
     "zod-validation-error": "^4.0.2"
   },
-  "scripts": {
-    "dev": "vite"
-  },
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
