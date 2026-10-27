@@ -575,3 +575,111 @@ font-style: italic;
     align-items: center;
   }
 }
+
+/* find your perfect fleece panel (breed explorer) */
+/* Kept at the end of the file so it can adjust the explorer's input/select styles. */
+
+.fleece-finder {
+  margin: 8px 0 16px;
+}
+
+.fleece-finder-toggle {
+  background-color: #5D72A8;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-right: 0;
+  font-size: 16px;
+}
+
+.fleece-finder-toggle:hover {
+  background-color: #4F6399;
+}
+
+.fleece-finder-arrow {
+  display: inline-block;
+  margin-right: 8px;
+  transition: transform 0.2s ease;
+}
+
+.fleece-finder-toggle[aria-expanded="true"] .fleece-finder-arrow {
+  transform: rotate(90deg);
+}
+
+.fleece-finder-panel {
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #f9fafa;
+  text-align: left;
+}
+
+.breed-explorer-page .fleece-finder-intro {
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.fleece-finder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px 16px;
+}
+
+.fleece-finder-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a4e54;
+}
+
+.fleece-finder-grid select {
+  max-width: none;
+  margin-bottom: 0;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #c9d3de;
+}
+
+.fleece-finder-grid .fleece-finder-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  grid-column: 1 / -1;
+  cursor: pointer;
+}
+
+.fleece-finder-grid .fleece-finder-checkbox input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  accent-color: #5D72A8;
+}
+
+.breed-results-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.breed-explorer-page .breed-results-count {
+  margin-bottom: 0;
+}
+
+.clear-filters-button {
+  background-color: transparent;
+  color: #4F6399;
+  border: 1px solid #4F6399;
+  border-radius: 20px;
+  padding: 6px 14px;
+  margin-right: 0;
+}
+
+.clear-filters-button:hover {
+  background-color: #4F6399;
+  color: white;
+}
