@@ -686,3 +686,10 @@ font-style: italic;
   background-color: #4F6399;
   color: white;
 }
+
+
+/* breed explorer banner: oval photo with the white border following the curve */
+.breed-explorer-page .breed-hero {
+  max-width: 360px;
+  border-radius: 50%;
+}

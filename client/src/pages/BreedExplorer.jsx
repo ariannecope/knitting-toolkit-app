@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import BreedCard from "../components/BreedCard";
 import FleeceFinder from "../components/FleeceFinder";
 import { emptyFilters, breedMatchesFilters } from "../data/breedFilters";
-import SheepBreeds1 from "../assets/SheepBreeds1.JPG";
+// cropped copy of SheepBreeds1.JPG, framed around the shepherdess and sheep for the oval
+import SheepBreedsOval from "../assets/SheepBreedsOval.jpg";
 
 export default function BreedExplorer() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -107,9 +108,9 @@ export default function BreedExplorer() {
           </p>
 
           <img
-            src={SheepBreeds1}
+            src={SheepBreedsOval}
             alt="A shepherdess surrounded by four shetland sheep"
-            className="image-standard"
+            className="image-standard breed-hero"
           />
 
           <div className="breed-controls">
