@@ -114,6 +114,72 @@ body {
 }
 
 
+/* home page story sections */
+.home-section {
+  max-width: 640px;
+  margin-top: 48px;
+}
+
+.home-section h2 {
+  font-size: clamp(26px, 6vw, 32px);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.home .home-section p {
+  max-width: none;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* about-section portrait: oval, keeping the white border from .image-standard */
+.home .home-portrait {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 8px auto 24px;
+}
+
+/* clickable sheep sketch that leads to the breed explorer */
+.home-breed-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #7C91C2;
+  text-decoration: none;
+}
+
+.home .home-breed-sketch {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 12px;
+  border-radius: 10px;   /* keep the white border from .image-standard instead of the collage styling */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-breed-link:hover .home-breed-sketch,
+.home-breed-link:focus-visible .home-breed-sketch {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.home-breed-link-text {
+  font-family: 'Tangerine', cursive;
+  font-weight: 700;
+  font-size: 34px;
+}
+
+.home-breed-link:hover .home-breed-link-text {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home .home-breed-sketch { transition: none; }
+  .home-breed-link:hover .home-breed-sketch { transform: none; }
+}
+
 /* 
 yarn calculater */
 
