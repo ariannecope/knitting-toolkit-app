@@ -693,3 +693,34 @@ font-style: italic;
   max-width: 360px;
   border-radius: 50%;
 }
+
+
+/* breed explorer: heading and oval photo gently settle into place and come into focus */
+@keyframes settle-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+.breed-explorer-page h1 {
+  animation: settle-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.breed-explorer-page .breed-hero {
+  animation: settle-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* no motion for visitors who have asked their device to reduce it */
+@media (prefers-reduced-motion: reduce) {
+  .breed-explorer-page h1,
+  .breed-explorer-page .breed-hero {
+    animation: none;
+  }
+}
