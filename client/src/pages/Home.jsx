@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import HomeCollage from "../assets/HomeCollage.JPG";
 // cropped copy of public/images/Arianne.JPG, framed around Arianne and the lamb for the oval
 import ArianneOval from "../assets/ArianneOval.jpg";
+// shetland.jpg sketch cut out from its paper (transparent around the sheep)
+import ShetlandCutout from "../assets/ShetlandCutout.webp";
 
 export default function Home() {
   return (
@@ -57,9 +59,9 @@ export default function Home() {
 
         <Link to="/breeds" className="home-breed-link">
           <img
-            src="/images/breeds/shetland.jpg"
+            src={ShetlandCutout}
             alt="Pencil sketch of a horned Shetland ram standing in grass, looking toward the viewer"
-            className="image-standard home-breed-sketch"
+            className="home-breed-sketch"
           />
           <span className="home-breed-link-text">Explore the sheep breeds</span>
         </Link>

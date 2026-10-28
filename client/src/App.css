@@ -155,14 +155,16 @@ body {
   width: 100%;
   max-width: 320px;
   margin: 0 auto 12px;
-  border-radius: 10px;   /* keep the white border from .image-standard instead of the collage styling */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 0;      /* the sheep is cut out, so no frame or shadow box from .home img */
+  box-shadow: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
+/* the shadow follows the sheep's outline rather than a rectangle */
 .home-breed-link:hover .home-breed-sketch,
 .home-breed-link:focus-visible .home-breed-sketch {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.18));
 }
 
 .home-breed-link-text {
