@@ -73,7 +73,6 @@ body {
 }
 
 .home h1 {
-  font-size: 42px;
   color: #7C91C2;
   margin-bottom: 28px;
   line-height: 1.4;   /* the inherited line-height is fixed at ~23px, too short for this script when it wraps */
@@ -187,7 +186,8 @@ button:hover {
 h1 {
 font-family: Pacifico;
 color: #d48c44;
-font-size: 55px;
+font-size: clamp(40px, 10vw, 64px);   /* page titles: 64px on wider screens, down to 40px on small phones */
+line-height: 1.3;   /* the inherited line-height is fixed at ~26px, too short for this large script */
 }
 h2 {
   color: #B88E3A;
@@ -213,8 +213,6 @@ font-style: italic;
 }
 
 .breed-explorer-page h1 {
-  font-size: clamp(40px, 10vw, 64px);   /* 64px on wider screens, scales down to 40px on small phones */
-  line-height: 1.3;
   margin-bottom: 16px;
   color: #7C91C2;
 }
@@ -294,7 +292,6 @@ font-style: italic;
 }
 
 .shop-page h1 {
-  font-size: 28px;
   margin-bottom: 8px;
   color: #9B6E86;
 }
@@ -362,7 +359,6 @@ font-style: italic;
 /* project tracker page */
 
 .tracker-page h1 {
-  font-size: 35px;
   color:#B88E3A
 }
 
@@ -397,7 +393,6 @@ font-style: italic;
 
 .gauge-page h1 {
   margin-bottom: 14px;
-  font-size: 30px;
   color:#9bb494;
 }
 
@@ -466,7 +461,6 @@ font-style: italic;
 }
 
 .tool-title {
-  font-size: 28px;
   margin-bottom: 20px;
 }
 
@@ -724,4 +718,12 @@ font-style: italic;
   .breed-explorer-page .breed-hero {
     animation: none;
   }
+}
+
+
+/* gauge calculator photo: round, keeping the white border from .image-standard */
+.gauge-page .gauge-hero {
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
 }

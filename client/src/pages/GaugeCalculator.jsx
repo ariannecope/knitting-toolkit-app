@@ -1,5 +1,6 @@
 import { useState } from "react";
-import swatch from "../assets/swatch.jpeg";
+// square crop of swatch.jpeg, framed around the knitting for the round photo
+import swatch from "../assets/swatchCircle.jpg";
 
 export default function GaugeCalculator() {
   const [stitches, setStitches] = useState("");
@@ -32,7 +33,7 @@ export default function GaugeCalculator() {
       <img
         src={swatch}
         alt="A small swatch being knit on circular needles"
-        className="image-standard"
+        className="image-standard gauge-hero"
       />
 
       <h2>What is Gauge?</h2>
