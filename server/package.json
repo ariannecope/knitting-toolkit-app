@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "dev": "nodemon index.js",
-  "start": "node index.js",
-  "seed:breed-images": "node db/seed-breed-images.js"
-},
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "seed:breed-images": "node db/seed-breed-images.js",
+    "seed:climate-groups": "node db/seed-climate-groups.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ariannecope/countries-app.git"
