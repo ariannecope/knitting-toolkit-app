@@ -22,7 +22,7 @@ export default function Home() {
           alt="Arianne smiling down at a black lamb held in her arms, in front of a weathered barn wall"
           className="image-standard home-portrait"
         />
-        <p>Hello, and welcome!</p>
+        <p className="home-greeting">Hello, and welcome!</p>
         <p>
           I'm Arianne, a lifelong maker, fiber artist, and now a developer.
           I've spent years exploring the possibilities of wool, yarn, and the

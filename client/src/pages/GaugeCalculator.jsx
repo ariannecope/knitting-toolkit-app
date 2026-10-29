@@ -1,6 +1,8 @@
 import { useState } from "react";
 // square crop of swatch.jpeg, framed around the knitting for the round photo
 import swatch from "../assets/swatchCircle.jpg";
+// pencil-style drawing of stockinette stitch, shown above the calculator inputs
+import stockinetteSwatch from "../assets/stockinetteSwatch.svg";
 
 export default function GaugeCalculator() {
   const [stitches, setStitches] = useState("");
@@ -81,6 +83,12 @@ export default function GaugeCalculator() {
           means try smaller needles.
         </li>
       </ol>
+
+      <img
+        src={stockinetteSwatch}
+        alt="Pencil sketch of a knitted swatch in stockinette stitch, showing columns of V-shaped stitches"
+        className="gauge-swatch-sketch"
+      />
 
       <div className="gauge-form">
         <input

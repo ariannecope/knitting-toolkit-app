@@ -133,6 +133,16 @@ body {
   margin-bottom: 16px;
 }
 
+/* greeting: home title's color in the breed-card name script */
+.home .home-section .home-greeting {
+  color: #7C91C2;
+  font-family: 'Tangerine', cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 37px;
+  line-height: 1.2;
+}
+
 /* about-section portrait: oval, keeping the white border from .image-standard */
 .home .home-portrait {
   width: 100%;
@@ -501,6 +511,15 @@ font-style: italic;
 
 .gauge-steps li {
   margin-bottom: 8px;
+}
+
+/* stockinette sketch centered above the calculator inputs */
+.gauge-swatch-sketch {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  margin: 32px auto 16px;
 }
 
 .gauge-form {
