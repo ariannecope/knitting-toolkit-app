@@ -652,6 +652,85 @@ font-style: italic;
   color: white;
 }
 
+/* pattern gauge comparison: pale sage card below the stitches-per-inch calculator */
+.gauge-comparison {
+  margin-top: 40px;
+  padding: 24px;
+  border-radius: 12px;
+  background-color: #eef3ec;
+  border: 1px solid #c9d8c3;
+}
+
+/* sage border so the inputs stand out on the card (the red error border still wins) */
+.gauge-comparison .gauge-form input:not([aria-invalid="true"]) {
+  border-color: #b5c9ae;
+}
+
+/* hint under each comparison input; beats .gauge-page p's spacing */
+.gauge-form .field-hint {
+  margin: 0;
+  font-size: 14px;
+  text-align: left;
+}
+
+.gauge-comparison-results {
+  padding: 16px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid #9bb494;
+  text-align: left;
+}
+
+.gauge-comparison .gauge-comparison-summary {
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  text-align: center;
+  color: #3f5a3a;
+}
+
+.gauge-breakdown {
+  margin: 0 0 16px;
+  color: #333;
+}
+
+/* one row per figure: label on the left, value on the right (wraps on narrow phones) */
+.gauge-breakdown div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #dfe8db;
+}
+
+.gauge-breakdown dd {
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.gauge-math {
+  margin-bottom: 16px;
+  color: #4e5163;
+}
+
+.gauge-math summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.gauge-math ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.gauge-comparison .gauge-comparison-note {
+  margin: 0;
+  font-size: 15px;
+}
+
 /* tools */
 
 .tool-page {

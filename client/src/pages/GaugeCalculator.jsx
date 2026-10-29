@@ -4,6 +4,8 @@ import { getPositiveNumberError } from "../utils/validateNumber.js";
 import swatch from "../assets/swatchCircle.jpg";
 // pencil-style drawing of stockinette stitch, shown above the calculator inputs
 import stockinetteSwatch from "../assets/stockinetteSwatch.svg";
+// pattern vs. actual gauge comparison, shown below the stitches-per-inch calculator
+import GaugeComparison from "../components/GaugeCalculatorComponents/GaugeComparison.jsx";
 
 export default function GaugeCalculator() {
   const [stitches, setStitches] = useState("");
@@ -155,6 +157,8 @@ show the result box. */}
       <div aria-live="polite">
         {gauge && <div className="gauge-result">{gauge}</div>}
       </div>
+
+      <GaugeComparison />
     </div>
   );
 }
