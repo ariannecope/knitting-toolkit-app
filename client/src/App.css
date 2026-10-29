@@ -280,6 +280,87 @@ button:hover {
   border: 1px solid #ddd;
   color:#111c44;
 }
+
+/* yarn calculator buttons: dark text on the gold so it's readable; white on the darker hover */
+.yarn-calculator button {
+  color: #3f3426;
+}
+
+.yarn-calculator button:hover {
+  color: white;
+}
+
+/* calculator field messages: a hint and/or a validation error under an input.
+   Prefixed with the form class so they beat .gauge-page p and .input-group's italics. */
+.input-group .field-hint {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #6b5d4f;
+}
+
+.input-group .field-error,
+.gauge-form .field-error {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  color: #a33a2a;
+  text-align: left;
+}
+
+.input-group input[aria-invalid="true"],
+.gauge-form input[aria-invalid="true"] {
+  border-color: #a33a2a;
+}
+
+/* skein calculator: reuses the .yarn-calculator card and .results box */
+.skein-summary {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.skein-breakdown {
+  margin: 0 0 16px;
+  text-align: left;
+}
+
+/* one row per figure: label on the left, yards on the right (wraps on narrow phones) */
+.skein-breakdown div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.skein-breakdown dd {
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.skein-math {
+  margin-top: 12px;
+  text-align: left;
+}
+
+.skein-math summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.skein-math ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+/* message shown in place of results until the inputs are complete (both yarn calculators) */
+.calculator-placeholder {
+  margin-top: 8px;
+  color: #615244;
+  font-style: italic;
+}
 h1 {
 font-family: Pacifico;
 color: #d48c44;
@@ -529,6 +610,19 @@ font-style: italic;
   margin-bottom: 20px;
 }
 
+/* label above each gauge input, matching the page's italic text */
+.gauge-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gauge-field label {
+  text-align: left;
+  color: #4e5163;
+  font-style: italic;
+}
+
 .gauge-form input {
   padding: 10px;
   border-radius: 8px;
@@ -546,7 +640,7 @@ font-style: italic;
   border-radius: 8px;
   border: none;
   background-color: #84c6ce;
-  color: white;
+  color: #17353a;   /* dark teal text; white on this light blue was hard to read */
   cursor: pointer;
 }
 

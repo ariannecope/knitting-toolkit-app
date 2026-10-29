@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getPositiveNumberError } from "../utils/validateNumber.js";
 // square crop of swatch.jpeg, framed around the knitting for the round photo
 import swatch from "../assets/swatchCircle.jpg";
 // pencil-style drawing of stockinette stitch, shown above the calculator inputs
@@ -9,15 +10,31 @@ export default function GaugeCalculator() {
   const [width, setWidth] = useState("");
   // null works well for conditional rendering value that comes later
   const [gauge, setGauge] = useState(null);
+  // validation messages shown beside each field ("" means no error)
+  const [errors, setErrors] = useState({});
+
+  // updates one input, clears its error, and hides an old result that no longer matches the inputs
+  function updateField(setValue, field, value) {
+    setValue(value);
+    setErrors((prev) => ({ ...prev, [field]: "" }));
+    setGauge(null);
+  }
 
   //parseFloat converts text into a decimal number--needed because input values come in as strings
   function calculateGauge() {
     const s = parseFloat(stitches);
     const w = parseFloat(width);
 
-//     "If s OR w is invalid/falsy, / show an error and stop the function." ! means: “NOT” It flips truthiness.
-    if (!s || !w) {
-      setGauge("Please enter valid numbers.");
+//     "If s OR w is empty, not a number, zero or negative, / show an error beside that field and stop the function."
+//     .some(Boolean) means: “is ANY message not empty?”
+    const newErrors = {
+      stitches: getPositiveNumberError(stitches),
+      width: getPositiveNumberError(width),
+    };
+    setErrors(newErrors);
+
+    if (Object.values(newErrors).some(Boolean)) {
+      setGauge(null);
       return;
     }
 
@@ -91,26 +108,53 @@ export default function GaugeCalculator() {
       />
 
       <div className="gauge-form">
-        <input
-          type="number"
-          placeholder="Total stitches"
-          value={stitches}
-          onChange={(e) => setStitches(e.target.value)}
-        />
+        <div className="gauge-field">
+          <label htmlFor="gauge-stitches">Total stitches</label>
+          <input
+            id="gauge-stitches"
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="Total stitches"
+            value={stitches}
+            onChange={(e) => updateField(setStitches, "stitches", e.target.value)}
+            aria-invalid={Boolean(errors.stitches)}
+            aria-describedby={errors.stitches ? "gauge-stitches-error" : undefined}
+          />
+          {errors.stitches && (
+            <p id="gauge-stitches-error" className="field-error">{errors.stitches}</p>
+          )}
+        </div>
 
-        <input
-          type="number"
-          placeholder="Width (in inches)"
-          value={width}
-          onChange={(e) => setWidth(e.target.value)}
-        />
+        <div className="gauge-field">
+          <label htmlFor="gauge-width">Width (in inches)</label>
+          <input
+            id="gauge-width"
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="Width (in inches)"
+            value={width}
+            onChange={(e) => updateField(setWidth, "width", e.target.value)}
+            aria-invalid={Boolean(errors.width)}
+            aria-describedby={errors.width ? "gauge-width-error" : undefined}
+          />
+          {errors.width && (
+            <p id="gauge-width-error" className="field-error">{errors.width}</p>
+          )}
+        </div>
 
-        <button onClick={calculateGauge}>Calculate Gauge</button>
+        <button type="button" onClick={calculateGauge}>Calculate Gauge</button>
       </div>
 
       {/* IF gauge exists,
 show the result box. */}
-      {gauge && <div className="gauge-result">{gauge}</div>}
+      {/* aria-live lets screen readers hear the result when it appears */}
+      <div aria-live="polite">
+        {gauge && <div className="gauge-result">{gauge}</div>}
+      </div>
     </div>
   );
 }
