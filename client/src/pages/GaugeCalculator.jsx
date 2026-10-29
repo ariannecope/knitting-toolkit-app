@@ -6,6 +6,8 @@ import swatch from "../assets/swatchCircle.jpg";
 import stockinetteSwatch from "../assets/stockinetteSwatch.svg";
 // pattern vs. actual gauge comparison, shown below the stitches-per-inch calculator
 import GaugeComparison from "../components/GaugeCalculatorComponents/GaugeComparison.jsx";
+// before-and-after blocking measurements, shown below the gauge comparison
+import BlockingCalculator from "../components/GaugeCalculatorComponents/BlockingCalculator.jsx";
 
 export default function GaugeCalculator() {
   const [stitches, setStitches] = useState("");
@@ -159,6 +161,8 @@ show the result box. */}
       </div>
 
       <GaugeComparison />
+
+      <BlockingCalculator />
     </div>
   );
 }

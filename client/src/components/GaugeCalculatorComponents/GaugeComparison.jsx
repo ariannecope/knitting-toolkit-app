@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getPositiveNumberError } from "../../utils/validateNumber.js";
+import { formatNumber, formatMath, formatSignedMath } from "../../utils/formatNumber.js";
 
 /*
   GaugeComparison Component
@@ -19,21 +20,6 @@ import { getPositiveNumberError } from "../../utils/validateNumber.js";
 // differences smaller than this (in inches) count as matching the pattern,
 // so we never say "0.0 inches wider"
 const MATCH_TOLERANCE = 0.05;
-
-// rounds to at most one decimal place by default: 36.3636 -> "36.4"
-function formatNumber(number, digits = 1) {
-  return number.toLocaleString("en-US", { maximumFractionDigits: digits });
-}
-
-// the working in "How we worked this out" uses 2 decimals so the rounded figures still add up
-const formatMath = (number) => formatNumber(number, 2);
-
-// signed version for the working: a true minus sign (−) to match the figures above,
-// and no sign at all when the value rounds to 0, so it never shows "-0"
-function formatSignedMath(number) {
-  const text = formatMath(Math.abs(number));
-  return number < 0 && text !== "0" ? `−${text}` : text;
-}
 
 // stitch counts must be positive whole numbers
 function getStitchCountError(value) {

@@ -652,8 +652,9 @@ font-style: italic;
   color: white;
 }
 
-/* pattern gauge comparison: pale sage card below the stitches-per-inch calculator */
-.gauge-comparison {
+/* pattern gauge comparison and blocking calculator: pale sage cards below the stitches-per-inch calculator */
+.gauge-comparison,
+.blocking-calculator {
   margin-top: 40px;
   padding: 24px;
   border-radius: 12px;
@@ -662,7 +663,8 @@ font-style: italic;
 }
 
 /* sage border so the inputs stand out on the card (the red error border still wins) */
-.gauge-comparison .gauge-form input:not([aria-invalid="true"]) {
+.gauge-comparison .gauge-form input:not([aria-invalid="true"]),
+.blocking-calculator .gauge-form input:not([aria-invalid="true"]) {
   border-color: #b5c9ae;
 }
 
@@ -673,7 +675,8 @@ font-style: italic;
   text-align: left;
 }
 
-.gauge-comparison-results {
+.gauge-comparison-results,
+.blocking-results {
   padding: 16px;
   border-radius: 10px;
   background-color: white;
@@ -681,7 +684,8 @@ font-style: italic;
   text-align: left;
 }
 
-.gauge-comparison .gauge-comparison-summary {
+.gauge-comparison .gauge-comparison-summary,
+.blocking-calculator .blocking-summary {
   margin-bottom: 8px;
   font-size: 20px;
   font-style: normal;
@@ -726,9 +730,76 @@ font-style: italic;
   padding-left: 20px;
 }
 
-.gauge-comparison .gauge-comparison-note {
+.gauge-comparison .gauge-comparison-note,
+.blocking-calculator .blocking-note {
   margin: 0;
   font-size: 15px;
+}
+
+/* blocking calculator: "before" and "after" groups side by side, stacked on phones */
+.blocking-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .blocking-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blocking-group {
+  min-width: 0;   /* lets the fieldset shrink inside the grid instead of overflowing */
+  margin: 0;
+  padding: 12px 16px 16px;
+  border: 1px solid #c9d8c3;
+  border-radius: 10px;
+}
+
+.blocking-group legend {
+  padding: 0 6px;
+  font-weight: 600;
+  color: #3f5a3a;
+}
+
+.blocking-group .gauge-form {
+  margin-bottom: 0;
+}
+
+/* status label beside each dimension; the word carries the meaning, the colour is a gentle extra */
+.blocking-status {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.blocking-status-grew {
+  background-color: #e3ede0;
+  color: #3f5a3a;
+}
+
+.blocking-status-shrank {
+  background-color: #f5e9df;
+  color: #7a4a2a;
+}
+
+.blocking-status-same {
+  background-color: #eceef2;
+  color: #4e5163;
+}
+
+.blocking-results .gauge-breakdown dd {
+  text-align: right;
+}
+
+.blocking-change {
+  font-weight: normal;
+  color: #4e5163;
 }
 
 /* tools */
