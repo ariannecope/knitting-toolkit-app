@@ -139,7 +139,7 @@ body {
   font-family: 'Tangerine', cursive;
   font-weight: 700;
   font-style: normal;
-  font-size: 37px;
+  font-size: 46px;   /* 25% larger than the breed-card names */
   line-height: 1.2;
 }
 
